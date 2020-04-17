@@ -1,21 +1,21 @@
 package Main;
 
-
+// лишние пробелы
 
 public class Main 
 {
 
-	enum EAction
+	enum EAction 
 	{
 		Sum,
 		Sub,
-		Mult,
+		Mult, // Енамы пишем капсом -SUM, ...
 		Dev;
 	}
 
 	public static void main(String[] args) 
 	{
-		
+		// лишний пробел
 		RunTest();
 		
 		System.out.println("Hello world. Hello DevEducation!");
@@ -25,13 +25,13 @@ public class Main
 		System.out.println("Rezul for Sum 2 000 000 000 + 200 000 000 : " + String.format("%.1f", MathAction(EAction.Sum,2000000000,200000000)));
 	}
 
-	
-
-	public static double MathAction(EAction action, double operand_A, double operand_B)
-	{
-		
+	// оставляй по одной пустой строке между методами
+								// переменные именнуем так operandA (без нижнего подчеркивания)
+	public static double MathAction(EAction action, double operand_A, double operand_B) // методы начинаем с маленькой буквы - mathAction(),
+	{ // эту фигурную скобку пишем строке 30 - operand_B) {
+		// лишний пробел
 		switch (action)
-		{
+		{ // перенеси ее выше
 		case Sum:
 			return operand_A + operand_B;
 		case Dev:
@@ -42,18 +42,18 @@ public class Main
 			return operand_A / operand_B;
 		}
 		return 0;
-		
+		// лишний пробел
 	}
 	
 	
 	
 	public static void RunTest()
-	{
+	{ // эту скобку пишем сразу после ()
 		System.out.println(TEST_MathAction());
 	}
 	
 	
-	
+	// пробелы
 	
 	private static String TEST_MathAction()
 	{
