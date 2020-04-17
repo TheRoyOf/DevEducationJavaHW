@@ -39,9 +39,9 @@ public class Main
         System.out.println("Int " + val_int + " to char = " + (char) val_int);
         System.out.println("char '" + val_char + "' to int = " + (int) val_char);
 
-        val_double = 1.9434;
+        val_double = 1.99999;
 
-        System.out.println("\nПриводим double " + val_double + " к int = " + (int)val_double);
+        System.out.println("\nПриводим double " + val_double + " к int = " + (int)val_double + " новичик ожидали округление? Java пофиг, дробную часть откинули и готово");
 
 
 
