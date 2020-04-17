@@ -4,7 +4,7 @@ public class Main
     {
         Sum,
         Sub,
-        Mult,
+        Mul,
         Div,
         Mod;
     }
@@ -65,7 +65,7 @@ public class Main
                 return operand_A.doubleValue() / operand_B.doubleValue();
             case Sub:
                 return operand_A.doubleValue() - operand_B.doubleValue();
-            case Mult:
+            case Mul:
                 return operand_A.doubleValue() * operand_B.doubleValue();
             case Mod:
                 return operand_A.doubleValue() % operand_B.doubleValue();

@@ -37,12 +37,12 @@ class MainTest
     }
 
     @Test
-    void TEST_MathAction_Mult()
+    void TEST_MathAction_Mul()
     {
         int testVal_A = 20;
         double testVal_B = 5;
         double valExpect = 100;
-        assertEquals(_Main.MathAction(Main.EAction.Mult,testVal_A,testVal_B),valExpect,delta);
+        assertEquals(_Main.MathAction(Main.EAction.Mul,testVal_A,testVal_B),valExpect,delta);
     }
 
     @Test
