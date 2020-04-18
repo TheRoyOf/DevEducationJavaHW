@@ -18,7 +18,7 @@ public class Main
         char val_char = 'a';
         float val_float = 6;
         double val_double = 7; //объявили и инициализировали переменные
-        
+        // а где boolean? это ведь тоже примитив
 
         System.out.println("Примеры неявного преобразования");
         System.out.println("Byte + Short = " + MathAction(EAction.Sum,val_byte, val_short));
