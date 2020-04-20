@@ -4,8 +4,11 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Value val = ParseValue(EnterValue());
-        System.out.println(Calc(val));
+        while(true)
+        {
+            Value val = ParseValue(EnterValue());
+            System.out.println(Calc(val));
+        }
     }
 
     public static String EnterValue()
@@ -107,19 +110,5 @@ public class Main
             System.out.println("Invalid string");
         }
         return Integer.toString((int)rez);
-    }
-}
-
-class Value
-{
-    public String val_A;
-    public String val_B;
-    public String action;
-
-    Value(String val)
-    {
-        val_A = val;
-        val_B = val;
-        action = val;
     }
 }

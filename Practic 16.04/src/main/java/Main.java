@@ -193,11 +193,3 @@ public class Main
         return value;
     }
 }
-
-
-class Value
-{
-    int even;
-    int uneven;
-    int even_sum;
-}
