@@ -1,6 +1,6 @@
 public enum EMetod
 {
-    If,
-    Switch,
-    Ternar;
+    IF,
+    SWITCH,
+    TERNAR;
 }

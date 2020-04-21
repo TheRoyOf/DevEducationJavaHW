@@ -19,7 +19,7 @@ public class InputTester
     {
         switch (metod)
         {
-            case If:
+            case IF:
 
                 if(val == 1 || val == 2 || val == 3)
                 {
@@ -29,7 +29,7 @@ public class InputTester
                 {
                     return "Invalid value";
                 }
-            case Switch:
+            case SWITCH:
 
                 switch (val)
                 {
@@ -38,7 +38,7 @@ public class InputTester
                     case 3: return Double.toString(val);
                     default: return "Invalid value";
                 }
-            case Ternar:
+            case TERNAR:
                 return 1 == val || 2 == val || 3 == val ? Double.toString(val) : "Invalid value";
         }
         return "Error";

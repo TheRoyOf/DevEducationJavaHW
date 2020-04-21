@@ -25,8 +25,8 @@ class TEST_HWTester
     @Test
     void TEST_TestValue()
     {
-        assertEquals(InputTester.TestValue(EMetod.If,1),"1.0");
-        assertEquals(InputTester.TestValue(EMetod.Switch,2),"2.0");
-        assertEquals(InputTester.TestValue(EMetod.Ternar,3),"3.0");
+        assertEquals(InputTester.TestValue(EMetod.IF,1),"1.0");
+        assertEquals(InputTester.TestValue(EMetod.SWITCH,2),"2.0");
+        assertEquals(InputTester.TestValue(EMetod.TERNAR,3),"3.0");
     }
 }

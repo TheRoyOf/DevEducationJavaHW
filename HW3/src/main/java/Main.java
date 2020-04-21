@@ -8,9 +8,9 @@ public class Main
         ClassX.main(null);
         System.out.println("Hipotenuse " + Pifagor.CalcHipotenuse(2,3));
         System.out.println("Условные конструкции");
-        System.out.println("Metod IF " + InputTester.GetVal(EMetod.If));
-        System.out.println("Metod Switch " + InputTester.GetVal(EMetod.Switch));
-        System.out.println("Metod Ternar " + InputTester.GetVal(EMetod.Ternar));
+        System.out.println("Metod IF " + InputTester.GetVal(EMetod.IF));
+        System.out.println("Metod Switch " + InputTester.GetVal(EMetod.SWITCH));
+        System.out.println("Metod Ternar " + InputTester.GetVal(EMetod.TERNAR));
     }
 }
 //Задача 1. Выберите строки, где требуется явное приведение.
