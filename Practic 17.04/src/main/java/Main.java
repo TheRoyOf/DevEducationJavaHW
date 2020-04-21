@@ -102,6 +102,10 @@ public class Main
             }
             else if (val.action.equals("/"))
             {
+                if (val.val_A.equals("0") || val.val_B.equals("0"))
+                {
+                    return ("Division by zero!!!");
+                }
                 rez = Double.parseDouble(val.val_A) / Double.parseDouble(val.val_B);
             }
         }
