@@ -38,7 +38,7 @@ public class Main
         Value value = new Value("");
         boolean first_val = true;
 
-        for(int i = 0; i<valueArr.length; ++i)
+        for(int i = 0; i < valueArr.length; ++i)
         {
             if (first_val)
             {
