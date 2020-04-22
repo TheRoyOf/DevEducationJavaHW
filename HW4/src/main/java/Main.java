@@ -7,13 +7,14 @@ public class Main {
 
     public static void main(String[] args)
     {
+        int maxLenght = 7;
 
         for( int taskId = 1; taskId <= 11; taskId++)
         {
             System.out.println("Task # " + taskId);
-            for (int y = 1; y <= 7; y++) {
-                for (int x = 1; x <= 7; x++) {
-                    if (isPrint(taskId,x,y))
+            for (int y = 1; y <= maxLenght; y++) {
+                for (int x = 1; x <= maxLenght; x++) {
+                    if (isPrint(taskId,x,y,maxLenght))
                     {
                         System.out.print("X ");
                     }
@@ -26,13 +27,10 @@ public class Main {
             }
             System.out.println("______________");
         }
-
-
     }
 
-    public static boolean isPrint(int taskId, int x, int y)
+    public static boolean isPrint(int taskId, int x, int y, int maxLenght)
     {
-        int maxLenght = 7;
         int mid = Math.round((float)maxLenght / 2);
 
         switch (taskId)
@@ -56,7 +54,7 @@ public class Main {
             case 9:
                     return (y == maxLenght || (x == y || maxLenght-y == x-1) && y >= mid);
             case 10:
-                    return (x == 7 || (x == y || maxLenght-y == x-1) && x >= mid);
+                    return (x == maxLenght || (x == y || maxLenght-y == x-1) && x >= mid);
             case 11:
                     return (x == 1 || (x == y || maxLenght-y == x-1) && x <= mid);
         }
