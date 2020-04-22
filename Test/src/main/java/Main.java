@@ -32,73 +32,34 @@ public class Main {
 
     public static boolean isPrint(int taskId, int x, int y)
     {
+        int maxLenght = 7;
+        int mid = Math.round((float)maxLenght / 2);
+
         switch (taskId)
         {
             case 1:
                 return true;
             case 2:
-                if ((x == 1 || x == 7) || (y == 1 || y == 7))
-                {
-                    return true;
-                }
-                break;
+                    return ((x == 1 || x == maxLenght) || (y == 1 || y == maxLenght));
             case 3:
-                int offset = 0;
-                if (x == 1 || y == 1 || (7-y == x-1))
-                {
-                    return true;
-                }
-                break;
+                    return (x == 1 || y == 1 || (maxLenght-y == x-1));
             case 4:
-                if (x == 1 || y == 7 || y == x)
-                {
-                    return true;
-                }
-                break;
+                    return (x == 1 || y == maxLenght || y == x);
             case 5:
-                if (x == 7 || y == 7 || (7-y == x-1))
-                {
-                    return true;
-                }
-                break;
+                    return (x == maxLenght || y == maxLenght || (maxLenght-y == x-1));
             case 6:
-                if (x == 7 || y == 1 || y == x)
-                {
-                    return true;
-                }
-                break;
+                    return (x == maxLenght || y == 1 || y == x);
             case 7:
-                if (x == y || 7-y == x-1)
-                {
-                    return true;
-                }
-                break;
+                    return (x == y || maxLenght-y == x-1);
             case 8:
-                if (y == 1 || (x == y || 7-y == x-1) && y <= 4)
-                {
-                    return true;
-                }
-                break;
+                    return (y == 1 || (x == y || maxLenght-y == x-1) && y <= mid);
             case 9:
-                if (y == 7 || (x == y || 7-y == x-1) && y >= 4)
-                {
-                    return true;
-                }
-                break;
+                    return (y == maxLenght || (x == y || maxLenght-y == x-1) && y >= mid);
             case 10:
-                if (x == 1 || (x == y || 7-y == x-1) && x <= 4)
-                {
-                    return true;
-                }
-                break;
+                    return (x == 1 || (x == y || maxLenght-y == x-1) && x >= mid);
             case 11:
-                if (x == 7 || (x == y || 7-y == x-1) && x >= 4)
-                {
-                    return true;
-                }
-                break;
+                    return (x == 7 || (x == y || maxLenght-y == x-1) && x <= mid);
         }
         return false;
     }
-
 }
