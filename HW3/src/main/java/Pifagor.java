@@ -8,4 +8,5 @@ public class Pifagor
     {
         return Math.sqrt(Math.pow(catet_A,2) + Math.pow(catet_B,2));
     }
+    // Т.к double больше чем int, то хватило бы одного метода, который принимает double
 }
