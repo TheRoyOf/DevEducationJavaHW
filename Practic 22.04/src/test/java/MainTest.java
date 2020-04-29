@@ -35,7 +35,7 @@ class MainTest {
         ArrayList<Integer> testedList = Main.GetPrimeNumbers(1000);
         for (int item : testedList)
         {
-            assertFalse((item != 2 && item != 3 && item != 5) && (item % 2 == 0 && item % 3 == 0 && item % 5 == 0));
+            assertFalse((item != 2 && item != 3 && item != 5) && (item % 2 == 0 || item % 3 == 0 || item % 5 == 0));
         }
     }
 }
