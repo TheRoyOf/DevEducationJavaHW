@@ -5,7 +5,8 @@ public class Main {
     public static void main(String[] args) {
         int[]arr = {2, 4, 6, 8, 10, 9, 7, 5, 3, 1};
 
-        System.out.println(Arrays.toString(fillRandom(10)));
+        System.out.println(Arrays.toString(fillRandom(arr,3,7)));
+        arr = new int[]{2, 4, 6, 8, 10, 9, 7, 5, 3, 1};
         System.out.println(Arrays.toString(squareRange(arr,3,7)));
 
         System.out.println(maxLineValue());
@@ -17,12 +18,11 @@ public class Main {
 
     }
 
-    public static int[] fillRandom(int size) {
-        int[] arr = new int[size];
-        int index = 0;
+    public static int[] fillRandom(int[] arr, int from, int to) {
+        int index = from;
         boolean flag;
 
-        while (index < arr.length) {
+        while (index < to) {
             flag = true;
             arr[index] = (int) (Math.random() * Integer.MAX_VALUE);
             for (int i = 0; i < index; i++) {
