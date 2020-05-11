@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String string = "Kraken utrhv grutt";
+        String string = "Kraken utrhv grutt dot";
         System.out.println("Task 1");
         printTask1(string);
         System.out.println("Task 2");
@@ -12,8 +13,16 @@ public class Main {
         System.out.println(removeBefore(string, 9, 3));
         System.out.println("Task 4");
         printTask4(string);
+        System.out.println("Task 5");
+        System.out.println("X");
         System.out.println("Task 6");
         System.out.println(isUniqueSimbols(string));
+        System.out.println("Max length " + maxLength(isUniqueSimbols(string)));
+        System.out.println("Min length " + minLength(isUniqueSimbols(string)));
+        System.out.println("Task 7");
+        printTask7();
+        System.out.println("Task 8");
+        System.out.println(isPalindrome("tsest"));
     }
 
     public static int amountOfRepeats(String str, String symbol) {
@@ -97,29 +106,53 @@ public class Main {
         return arr;
     }
 
-    public static String maxLength(ArrayList<String> arr)
-    {
+    public static String maxLength(ArrayList<String> arr) {
         String prevString = "";
-        for (String item : arr)
-        {
-            if (item.length()>prevString.length())
-            {
+        for (String item : arr) {
+            if (item.length() > prevString.length()) {
                 prevString = item;
             }
         }
         return prevString;
     }
 
-    public static String minLength(ArrayList<String> arr)
-    {
+    public static String minLength(ArrayList<String> arr) {
         String prevString = arr.get(0);
-        for (String item : arr)
-        {
-            if (item.length()>prevString.length())
-            {
+        for (String item : arr) {
+            if (item.length() < prevString.length()) {
                 prevString = item;
             }
         }
         return prevString;
+    }
+
+    public static void printTask7() {
+        Scanner scanner = new Scanner(System.in);
+        String val = "";
+        ArrayList<String> list = new ArrayList<String>();
+        do {
+            val = scanner.nextLine();
+            if (!val.equals("EXIT"))
+                list.add(val);
+        } while (!val.equals("EXIT"));
+
+        val = "";
+        int randomIndex;
+        while (list.size()>0)
+        {
+            randomIndex = (int) (Math.random()*list.size());
+            val+=list.get(randomIndex)+" ";
+            list.remove(randomIndex);
+        }
+        System.out.println(val);
+    }
+
+    public static boolean isPalindrome(String string)
+    {
+        boolean flag = true;
+        for (int i = 0; i<string.length();i++)
+            if (!(string.charAt(i) == string.charAt(string.length()-1-i)))
+                flag = false;
+        return flag;
     }
 }
