@@ -21,13 +21,13 @@ public class StudentList {
     }
 
     public static ArrayList<Student> GetByFaculty(String faculty)
-    {
+    { // эту скобку ставим сразу после круглых (на строкуь выше)
         ArrayList<Student> rezult = new ArrayList<Student>();
 
         for (Student student:students)
-        {
+        { // эту скобку ставим сразу после круглых (на строкуь выше)
             if (student.faculty.equals(faculty))
-            {
+            { // эту скобку ставим сразу после круглых (на строкуь выше)
                 rezult.add(student);
             }
         }
