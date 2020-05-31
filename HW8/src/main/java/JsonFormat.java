@@ -2,7 +2,7 @@ public class JsonFormat extends AbstractFormat {
 
     @Override
     public Parent fromFormat(String str) {
-        str = str.replaceAll("[^a-zA-Z0-9]", " ");
+        str = str.replaceAll("[^a-zA-Z0-9]", " "); // дублирование кода! Можно вынести в метод
         str = str.trim().replaceAll(" +", " ");
         String[] array = str.split(" ");
 

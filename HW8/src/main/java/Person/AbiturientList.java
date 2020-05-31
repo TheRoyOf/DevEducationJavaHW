@@ -6,6 +6,7 @@ public class AbiturientList {
 
     static ArrayList<Abiturient> abiturients = new ArrayList<Abiturient>();
 
+    // Все методы должны начинаться с маленькой буквы и должны описывать действие, например - getRatingLessThat(), countRatingLessThat()
     public static ArrayList<Abiturient> RatingLessThat(float val)
     {
         ArrayList<Abiturient> rezult = new ArrayList<Abiturient>();
