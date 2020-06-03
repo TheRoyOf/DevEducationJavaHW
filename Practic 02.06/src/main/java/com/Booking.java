@@ -9,8 +9,9 @@ public class Booking {
     public int seats;
     public EApartmentType apartmentType;
     public int daysOfStay;
+    public float price;
 
-    Apartment apartment;
+    private Apartment apartment;
 
     public Booking(User user, int seats, EApartmentType apartmentType, int daysOfStay) {
         this.moderate = false;
@@ -21,5 +22,13 @@ public class Booking {
 
         if(!Hotel.AddBooking(this))
             user.BookingError();
+    }
+
+    public void setApartment(Apartment apartment) {
+        this.apartment = apartment;
+    }
+
+    public Apartment getApartment() {
+        return apartment;
     }
 }

@@ -1,5 +1,8 @@
 package com;
 
+import com.enums.EApartmentStatus;
+import com.enums.EApartmentType;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +20,14 @@ public class Hotel {
         bookings.add(booking);
         return true;
     }
+    public static boolean addApartment(Apartment apartment)
+    {
+        return apartments.add(apartment);
+    }
+
+    public static List<Apartment> getApartments() {
+        return apartments;
+    }
 
     public static Booking GetUnmanagedBooking()
     {
@@ -26,6 +37,46 @@ public class Hotel {
                 return booking;
         }
         return null;
+    }
+
+    public static List<Apartment> GetByFilter(float price, List<Apartment> apartments)
+    {
+        List<Apartment> rez = new ArrayList<>();
+        for (Apartment apartment : apartments) {
+            if (apartment.price<=price)
+                rez.add(apartment);
+        }
+        return rez;
+    }
+
+    public static List<Apartment> GetByFilter(int seats, List<Apartment> apartments)
+    {
+        List<Apartment> rez = new ArrayList<>();
+        for (Apartment apartment : apartments) {
+            if (apartment.seats==seats)
+                rez.add(apartment);
+        }
+        return rez;
+    }
+
+    public static List<Apartment> GetByFilter(EApartmentStatus apartmentStatus, List<Apartment> apartments)
+    {
+        List<Apartment> rez = new ArrayList<>();
+        for (Apartment apartment : apartments) {
+            if (apartment.apartmentStatus.equals(apartmentStatus))
+                rez.add(apartment);
+        }
+        return rez;
+    }
+
+    public static List<Apartment> GetByFilter(EApartmentType apartmentType, List<Apartment> apartments)
+    {
+        List<Apartment> rez = new ArrayList<>();
+        for (Apartment apartment : apartments) {
+            if (apartment.apartmentType.equals(apartmentType))
+                rez.add(apartment);
+        }
+        return rez;
     }
 
     public static String GetToken(String fullName, String username, String date) {

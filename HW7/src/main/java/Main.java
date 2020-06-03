@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -35,8 +36,8 @@ public class Main {
         return counter;
     }
 
-    public static ArrayList<String> getStringItem(String string) {
-        ArrayList<String> arr = new ArrayList<String>();
+    public static List<String> getStringItem(String string) {
+        List<String> arr = new ArrayList<String>();
         for (String item : string.split("")) {
             if (!arr.contains(item)) {
                 arr.add(item);
