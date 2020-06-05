@@ -1,3 +1,5 @@
+package Shop;
+
 public class User {
     String login;
     String password;
