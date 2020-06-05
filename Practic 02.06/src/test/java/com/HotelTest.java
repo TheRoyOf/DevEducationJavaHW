@@ -84,21 +84,8 @@ class HotelTest {
         expectedByStatus.add(new Apartment(88f,2,EApartmentType.CLASIC,EApartmentStatus.FREE));
         expectedByStatus.add(new Apartment(489f,4,EApartmentType.VIP,EApartmentStatus.FREE));
 
-        assertTrue(isListEquals(expectedByPrice,Hotel.GetByFilter(100f, Hotel.getApartments())));
-        assertTrue(isListEquals(expectedBySeats,Hotel.GetByFilter(2, Hotel.getApartments())));
-        assertTrue(isListEquals(expectedByType,Hotel.GetByFilter(EApartmentType.CLASIC, Hotel.getApartments())));
-        assertTrue(isListEquals(expectedByStatus,Hotel.GetByFilter(EApartmentStatus.FREE, Hotel.getApartments())));
+        assertArrayEquals(expectedByPrice.toArray(), Hotel.GetByFilter(100f, Hotel.getApartments()).toArray());
 
-    }
-
-    private boolean isListEquals(List<Apartment> expected, List<Apartment> actual) {
-        if (expected.size()!= actual.size())
-            return false;
-        for (int i = 0; i < actual.size(); i++) {
-            if (!expected.get(i).equals(actual.get(i)));
-            return false;
-        }
-        return true;
     }
 
     @Test
