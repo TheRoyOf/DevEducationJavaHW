@@ -7,6 +7,6 @@ public class Car {
     float prise;
     String number;
 
-    
+
 
 }
