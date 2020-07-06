@@ -5,28 +5,40 @@ import com.interfaces.List;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class AList<T> implements List {
+public class RList<T> implements List<T> {
 
-    private T[] array = (T[]) new Object[10];
+    private RListWrapper[] array = new RListWrapper[10];
 
     private int lastIndex = 0;
 
-    public Object get(int index) {
+    public RListWrapper<T> get(int index) {
         if (index < 0 || index > lastIndex) {
             throw new IndexOutOfBoundsException();
         }
+
         return array[index];
     }
 
-    public boolean add(Object item) {
+    public T getElement(int index) {
+        if (index < 0 || index > lastIndex) {
+            throw new IndexOutOfBoundsException();
+        }
+        return (T) array[index].getElement();
+    }
+
+    public boolean add(T item) {
         if (lastIndex == array.length) {
             resize(array.length * 3 / 2); // капелька магических чисел
         }
-        array[lastIndex++] = (T) item;
+        array[lastIndex++].setElement(item);
+        if (array.length > 1)
+        {
+            array[lastIndex-1].setNextElement(array[lastIndex]);
+        }
         return true;
     }
 
-    public boolean addFirst(Object item) {
+    public boolean addFirst(T item) {
         if (lastIndex == array.length) {
             resize(array.length * 3 / 2);
         }
@@ -34,11 +46,15 @@ public class AList<T> implements List {
         for (int i = ++lastIndex; i > 0; i--) {
             array[i] = array[i - 1];
         }
-        array[0] = (T) item;
+        array[0].setElement(item);
+        if(array.length > 1)
+        {
+            array[0].setNextElement(array[1]);
+        }
         return true;
     }
 
-    public boolean add(int index, Object item) {
+    public boolean add(int index, T item) {
         if (index < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -49,20 +65,23 @@ public class AList<T> implements List {
         for (int i = ++lastIndex; i > index; i--) {
             array[i] = array[i - 1];
         }
-        array[index] = (T) item;
+        array[index].setElement(item);
         return true;
     }
 
-    public boolean remove(Object item) {
+    public boolean remove(T item) {
         for (int i = 0; i < lastIndex; i++) {
             if (array[i].equals(item)) {
                 array[i] = null;
-
                 for (int j = i; j < lastIndex; j++) {
                     array[j] = array[j + 1];
                 }
                 array[lastIndex] = null;
                 --lastIndex;
+                if (lastIndex > 0)
+                {
+                    array[i-1].setNextElement(array[i]);
+                }
             }
         }
         return true;
@@ -72,17 +91,21 @@ public class AList<T> implements List {
         if (index < 0 || index > array.length - 1) {
             throw new IndexOutOfBoundsException();
         }
-        Object temp = array[index];
+        RListWrapper temp = array[index];
         for (int i = index; i < lastIndex; i++) {
             array[i] = array[i + 1];
         }
         array[lastIndex] = null;
         --lastIndex;
-        return temp;
+        if (lastIndex > 0)
+        {
+            array[index-1].setNextElement(array[index]);
+        }
+        return temp.getElement();
     }
 
     public void clear() {
-        array = (T[]) new Object[10];
+        array = new RListWrapper[10];
         lastIndex = 0;
     }
 
@@ -105,9 +128,9 @@ public class AList<T> implements List {
 
 
     private void resize(int newSize) {
-        T[] newArray = (T[]) new Object[newSize];
+        RListWrapper[] newArray = new RListWrapper[newSize];
         for (int i = 0; i < array.length; i++) {
-            newArray[i] = array[i];
+            newArray[i].setElement(array[i].getElement());
         }
         array = newArray;
     }
@@ -116,9 +139,9 @@ public class AList<T> implements List {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AList aList = (AList) o;
-        return lastIndex == aList.lastIndex &&
-                Arrays.equals(array, aList.array);
+        RList rList = (RList) o;
+        return lastIndex == rList.lastIndex &&
+                Arrays.equals(array, rList.array);
     }
 
     @Override
