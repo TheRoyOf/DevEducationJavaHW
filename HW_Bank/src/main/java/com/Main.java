@@ -11,17 +11,12 @@ public class Main {
             while (true) {
                 new Client(bank).start();
                 try {
-                    Thread.sleep(100); // еееее!!!!! магия!!!!!
+                    Thread.sleep(3);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         });
         newClients.start();
-
-
-
-
-
     }
 }

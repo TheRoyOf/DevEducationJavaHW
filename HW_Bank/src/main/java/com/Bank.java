@@ -71,7 +71,7 @@ public class Bank {
         int sum = client.getIntent().getSum().get();
         client.getMoney().set(client.getMoney().get() - sum);
         balance.set((balance.get() + sum));
-        this.clientsWithDeposits.add(client); // ))
+        this.clientsWithDeposits.add(client);
         this.clientQueue.add(client);
         }
     }
