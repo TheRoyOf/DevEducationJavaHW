@@ -46,7 +46,7 @@ public class Bank {
         this.isLoanAvailable = new AtomicBoolean(true);
         this.isDepositAvailable = new AtomicBoolean(true);
         this.fileLogger = new FileLogger(this);
-        this.logFile = this.fileLogger.createLog(destination);
+        //this.logFile = this.fileLogger.createLog(destination);
     }
 
     public Bank(int cycleCount) {
@@ -56,7 +56,7 @@ public class Bank {
         this.clientQueue = new ConcurrentLinkedQueue<>();
         this.clientsWithDeposits = new CopyOnWriteArrayList<>();
         this.clientsWithLoans = new CopyOnWriteArrayList<>();
-        this.fileLogger = new FileLogger(this);
+        //this.fileLogger = new FileLogger(this);
     }
 
     public synchronized void giveLoan(Client client) {
@@ -68,7 +68,7 @@ public class Bank {
         balance.set((balance.get() - sum));
         this.clientsWithLoans.add(client);
         this.clientQueue.add(client);
-        fileLogger.logUpdate(logFile, destination, client.getIntentionSelector(),client.getIntent().getSum().get());
+        //fileLogger.logUpdate(logFile, destination, client.getIntentionSelector(),client.getIntent().getSum().get());
         }
     }
 
@@ -80,12 +80,13 @@ public class Bank {
         balance.set((balance.get() + sum));
         this.clientsWithDeposits.add(client);
         this.clientQueue.add(client);
+        //fileLogger.logUpdate(logFile, destination, client.getIntentionSelector(),client.getIntent().getSum().get());
         }
     }
 
-    public synchronized boolean isLoanAvailable() {
+    public synchronized boolean isLoanAvailable(int sum) {
 
-        if (clientsWithDeposits.isEmpty() && balance.get() >= 58_000 && isLoanAvailable.get()) { // magic!!!!
+        if (clientsWithDeposits.isEmpty() && balance.get()-sum >= 58_000 && isLoanAvailable.get()) {
             return true;
         } else if (!clientsWithDeposits.isEmpty() && isLoanAvailable.get()) {
             return true;
@@ -97,13 +98,10 @@ public class Bank {
         return isDepositAvailable.get() && balance.get() < MAX_BALANCE;
     }
 
-    private int getDepositSum() {
-        return clientsWithDeposits.stream()
-                .map(Client::getIntent)
-                .map(Intention::getSum)
-                .mapToInt(AtomicInteger::get)
-                .sum();
+    public synchronized boolean isDepositAvailable(int sum) {
+        return isDepositAvailable.get() && balance.get() + sum < MAX_BALANCE;
     }
+
 
     public int addMoney(float money)
     {

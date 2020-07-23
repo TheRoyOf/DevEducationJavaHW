@@ -34,7 +34,7 @@ public class Client extends Thread implements Serializable {
                 boolean loanCheckActive = true;
                 while (loanCheckActive)
                 {
-                    if (this.bank.isLoanAvailable()) {
+                    if (this.bank.isLoanAvailable(intention.getSum().get())) {
                         bank.giveLoan(this);
                         System.out.println("Client " + getStaticId() + " took a loan of " + this.getIntent().getSum().get() +
                                 " Bank balance: " + this.bank.getBalance().get());
@@ -48,7 +48,7 @@ public class Client extends Thread implements Serializable {
                 boolean depositCheckActive = true;
                 while (depositCheckActive)
                 {
-                    if (this.bank.isDepositAvailable()) {
+                    if (this.bank.isDepositAvailable(intention.getSum().get())) {
                         bank.acceptDeposit(this);
                         System.out.println("Client " + getStaticId() + " had put a deposit of " + this.getIntent().getSum().get()
                                 + " Bank balance: " + this.bank.getBalance().get());
