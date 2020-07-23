@@ -14,6 +14,9 @@ public class Client extends Thread implements Serializable {
     private Intention intention;
     private Bank bank;
 
+    public EIntention getIntentionSelector() {
+        return intentionSelector;
+    }
 
     public Client(Bank bank) {
         staticId.incrementAndGet();

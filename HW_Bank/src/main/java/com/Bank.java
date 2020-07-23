@@ -24,6 +24,10 @@ public class Bank {
     private boolean inspectorLoanRule = true;
     private boolean inspectorLDepositRule = true;
 
+    private FileLogger fileLogger;
+    private String logFile;
+    private String destination = "";
+
     public float getDEPOSIT_INTEREST() {
         return DEPOSIT_INTEREST;
     }
@@ -41,6 +45,8 @@ public class Bank {
         this.clientsWithLoans = new CopyOnWriteArrayList<>();
         this.isLoanAvailable = new AtomicBoolean(true);
         this.isDepositAvailable = new AtomicBoolean(true);
+        this.fileLogger = new FileLogger(this);
+        this.logFile = this.fileLogger.createLog(destination);
     }
 
     public Bank(int cycleCount) {
@@ -50,18 +56,19 @@ public class Bank {
         this.clientQueue = new ConcurrentLinkedQueue<>();
         this.clientsWithDeposits = new CopyOnWriteArrayList<>();
         this.clientsWithLoans = new CopyOnWriteArrayList<>();
-
+        this.fileLogger = new FileLogger(this);
     }
 
     public synchronized void giveLoan(Client client) {
 
-        if (!isBeingChecked.get()){
+        if (!isBeingChecked.get())
+        {
         int sum = client.getIntent().getSum().get();
         client.getMoney().getAndAdd(sum);
         balance.set((balance.get() - sum));
-        this.clientsWithLoans.add(client); // переделать
+        this.clientsWithLoans.add(client);
         this.clientQueue.add(client);
-
+        fileLogger.logUpdate(logFile, destination, client.getIntentionSelector(),client.getIntent().getSum().get());
         }
     }
 
